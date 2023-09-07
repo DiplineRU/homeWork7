@@ -44,27 +44,41 @@ public class Main {
         int death = 8;
         int years = 10;
 
-        for (int year = 1; year <= years; year++){
-            int prirostNaseleniya = (bithday - death)* Y / 1000;                            //простите меня
+        for (int year = 1; year <= years; year++) {
+            int prirostNaseleniya = (bithday - death) * Y / 1000;                            //простите меня
             Y += prirostNaseleniya;                                                         //мне помогла
             System.out.println("Год " + year + ", численность населения составляет " + Y);  //нейросеть :-(
         }
 
 
-
-            System.out.println("Задание 4.");
+        System.out.println("Задание 4.");
         /*Василий решил положить деньги на накопительный счет, где каждый месяц к сумме его вклада добавляется еще 7%.
         Первоначальная сумма вклада — 15 тысяч рублей.
         Вычислите и выведите в консоль, сколько месяцев Василию нужно будет копить,
         чтобы собрать сумму в 12 миллионов рублей при условии, что процент банка от накоплений не меняется,
         а всегда равен 7%.
         Выведите в консоль результат программы с указанием суммы накоплений по каждому месяцу.*/
-
+        int cashVasa = 15_000;
+        int monthVasa = 0;
+        while (cashVasa <= 12_000_000) {
+            cashVasa = cashVasa + cashVasa * 7 / 100;
+            monthVasa++;
+            System.out.println("Сумма накоплений за " + monthVasa + " месяц равна " + cashVasa);
+        }
 
         System.out.println("Задание 5.");
         /*Видоизмените программу таким образом, чтобы в консоль выводились не все месяцы подряд, а только каждый шестой.
         Должны быть видны накопления за 6-й, 12-й, 18-й, 24-й и следующие месяцы.
          */
+        cashVasa = 15_000;
+        monthVasa = 0;
+        while (cashVasa <= 12_000_000) {
+            cashVasa = cashVasa + cashVasa * 7 / 100;
+            monthVasa++;
+            if (monthVasa % 6 == 0)
+                System.out.println(monthVasa + " месяц равна " + cashVasa);
+        }
+
 
         System.out.println("Задание 6.");
         /*Василий решил, что будет копить деньги ближайшие 9 лет. Он хочет знать, какой будет сумма его накоплений
@@ -72,6 +86,15 @@ public class Main {
         Исходная сумма всё та же — 15 тысяч рублей, проценты банка — 7% ежемесячно.
         Напишите программу, которая будет выводить сумму накоплений за каждые полгода в течение 9 лет.*/
 
+        int cashVasilii = 15_000;
+        int monthVasilii = 0;   //9*12 = 108
+        while (monthVasilii < 12 * 9) {
+            cashVasilii = cashVasilii + cashVasilii * 7 / 100;
+            monthVasilii++;
+            if (monthVasilii % 6 == 0) {
+                System.out.println(monthVasilii + " месяц равeн " + cashVasilii);
+            }
+        }
 
         System.out.println("Задание 7.");
         /*В компании пятница — отчетный день.
@@ -83,6 +106,13 @@ public class Main {
         В нашем месяце 31 день. В результате у вас должно получиться от 4 до 5 сообщений с напоминаниями по разным датам.*/
 
         int friday = 5;
+        do {
+            if (friday % 7 == 5) {
+                System.out.println("Сегодня пятница, " + friday + "-е число. Необходимо подготовить отчет.");
+            }
+            friday++;
+        } while (friday < 31);
+
 
         System.out.println("Задание 8.");
        /* Нам нужно написать астрономическое приложение, которое считает, когда над Землей пролетает комета.
@@ -95,6 +125,15 @@ public class Main {
         1896
         1975
         2054*/
-        
+
+        int now = 2023;
+        int year = 0;
+        do {
+            if (year > now - 200){
+                System.out.println(year);
+            }
+            year+=79;
+        }while (year < now +100);
+
     }
 }
